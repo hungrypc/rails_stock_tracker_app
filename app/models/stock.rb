@@ -1,4 +1,7 @@
 class Stock < ApplicationRecord
+  has_many :user_stocks
+  has_many :users, through: :user_stocks
+  
   def self.new_lookup(ticker_symbol)
     client = IEX::Api::Client.new(
       publishable_token: 'Tpk_a3206175d4ea446dbe4e0350061c2b25',  # for some reason, i cant store secrets
